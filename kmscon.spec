@@ -19,8 +19,10 @@ BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(pixman-1)
  
 %description
-Kmscon is a simple terminal emulator based on linux kernel mode setting (KMS).
-It is an attempt to replace the in-kernel VT implementation with a userspace console.
+Kmscon is a simple terminal emulator based on 
+linux kernel mode setting (KMS).
+It is an attempt to replace the in-kernel 
+VT implementation with a userspace console.
 
 %prep
 %setup -q
