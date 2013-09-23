@@ -93,12 +93,12 @@ Development libraries for libuterm.
 
 %install
 %makeinstall_std
-install -pm0644 docs/*.service %{_unitdir}/
+install -pm0644 docs/*.service %{buildroot}%{_unitdir}/
 
 %files
 %{_bindir}/%{name}
 %{_libdir}/%{name}/*.so
-%{_unitdir}/*.service
+%{_unitdir}/%{name}*.service
 
 %files -n %{libeloop}
 %{_libdir}/libeloop.so.%{major}*
