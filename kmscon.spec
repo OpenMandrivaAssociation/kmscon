@@ -93,7 +93,8 @@ Development libraries for libuterm.
 
 %install
 %makeinstall_std
-install -pm0644 docs/*.service -D %{buildroot}%{_unitdir}/
+mkdir -p %{buildroot}%{_unitdir}
+install -pm0644 docs/*.service %{buildroot}%{_unitdir}/
 
 %files
 %{_bindir}/%{name}
