@@ -73,11 +73,11 @@ Group:		System/Libraries
 %description -n %{libuterm}
 User-space Terminal Video/Input/Hotplug/etc Helper Library.
 
-%package -n %{libuterm-devel}
+%package -n %{libuterm_devel}
 Summary:	Development libraries for libuterm
 Group:		Development/C
 
-%description -n %{libuterm-devel}
+%description -n %{libuterm_devel}
 Development libraries for libuterm.
 
 %prep
