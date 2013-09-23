@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
+BuildRequires:	pkgconfig(fuse)
 
 %description
 Kmscon is a simple terminal emulator based on 
