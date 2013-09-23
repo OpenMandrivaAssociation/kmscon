@@ -13,11 +13,10 @@ BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(egl)
 BuildRequires:	pkgconfig(glesv2)
-#BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	pkgconfig(pango)‎
+BuildRequires:	pkgconfig(pango)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(pixman-1)
- 
+
 %description
 Kmscon is a simple terminal emulator based on 
 linux kernel mode setting (KMS).
