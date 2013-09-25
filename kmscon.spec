@@ -17,6 +17,7 @@ License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.bz2
+Patch0:		0001-fix-service-file.patch
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
 BuildRequires:	pkgconfig(xkbcommon)
@@ -31,6 +32,7 @@ BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
+Requires(post,preun):	spec-helper
 
 %description
 Kmscon is a simple terminal emulator based on 
@@ -82,6 +84,7 @@ Development libraries for libuterm.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %serverbuild_hardened
@@ -95,6 +98,24 @@ Development libraries for libuterm.
 %makeinstall_std
 mkdir -p %{buildroot}%{_unitdir}
 install -pm0644 docs/*.service %{buildroot}%{_unitdir}/
+
+%post
+if [ -e /etc/systemd/system/autovt\@.service ]; then
+	# backup the original autovt
+	mv -f /etc/systemd/system/autovt\@.service /etc/systemd/system/autovt\@.kmscon
+fi
+
+ln -s /lib/systemd/system/kmsconvt\@.service /etc/systemd/system/autovt\@.service
+
+%_post_service kmsconvt\@.service
+
+%preun
+%_preun_service kmsconvt\@.service
+
+if [ -e /etc/systemd/system/autovt\@.service ]; then
+	rm -rf /etc/systemd/system/autovt\@.service
+	mv -f /etc/systemd/system/autovt\@.kmscon autovt\@.service
+fi
 
 %files
 %{_bindir}/%{name}
