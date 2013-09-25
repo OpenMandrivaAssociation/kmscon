@@ -18,20 +18,20 @@ Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.bz2
 Patch0:		0001-fix-service-file.patch
-BuildRequires:	pkgconfig(libsystemd-login)
-BuildRequires:	pkgconfig(libsystemd-daemon)
-BuildRequires:	pkgconfig(xkbcommon)
-BuildRequires:	pkgconfig(dbus-1)
-BuildRequires:	pkgconfig(libdrm)
-BuildRequires:	pkgconfig(gbm)
-BuildRequires:	pkgconfig(egl)
-BuildRequires:	pkgconfig(glesv2)
-BuildRequires:	pkgconfig(pango)
-BuildRequires:	pkgconfig(cairo)
-BuildRequires:	pkgconfig(pixman-1)
-BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	pkgconfig(fontconfig)
-BuildRequires:	pkgconfig(fuse)
+#BuildRequires:	pkgconfig(libsystemd-login)
+#BuildRequires:	pkgconfig(libsystemd-daemon)
+#BuildRequires:	pkgconfig(xkbcommon)
+#BuildRequires:	pkgconfig(dbus-1)
+#BuildRequires:	pkgconfig(libdrm)
+#BuildRequires:	pkgconfig(gbm)
+#BuildRequires:	pkgconfig(egl)
+#BuildRequires:	pkgconfig(glesv2)
+#BuildRequires:	pkgconfig(pango)
+#BuildRequires:	pkgconfig(cairo)
+#BuildRequires:	pkgconfig(pixman-1)
+#BuildRequires:	pkgconfig(freetype2)
+#BuildRequires:	pkgconfig(fontconfig)
+#BuildRequires:	pkgconfig(fuse)
 Requires(post,preun):	spec-helper
 
 %description

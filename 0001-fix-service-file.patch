@@ -9,8 +9,8 @@ Subject: [PATCH] fix service file
 
 diff --git a/kmscon-7/docs/kmsconvt@.service b/kmscon-7/docs/kmsconvt@.service
 index f8622fc..a745a4d 100644
---- a/kmscon-7/docs/kmsconvt@.service
-+++ b/kmscon-7/docs/kmsconvt@.service
+--- a/docs/kmsconvt@.service
++++ b/docs/kmsconvt@.service
 @@ -43,6 +43,12 @@ TTYPath=/dev/%I
  TTYReset=yes
  TTYVHangup=yes
