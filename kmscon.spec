@@ -11,12 +11,12 @@
 
 Summary:	KMS/DRM based System Console
 Name:		kmscon
-Version:	7
-Release:	2
+Version:	8
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
-Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.bz2
+Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
 Patch0:		0001-fix-service-file.patch
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
