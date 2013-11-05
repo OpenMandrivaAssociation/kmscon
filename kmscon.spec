@@ -4,8 +4,6 @@
 
 %define libeloop %mklibname eloop %{major}
 %define libeloop_devel %mklibname eloop -d
-%define libtsm %mklibname tsm %{major}
-%define libtsm_devel %mklibname tsm -d
 %define libuterm %mklibname uterm %{major}
 %define libuterm_devel %mklibname uterm -d
 
@@ -17,7 +15,7 @@ License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
-Patch0:		0001-fix-service-file.patch
+#Patch0:		0001-fix-service-file.patch
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
 BuildRequires:	pkgconfig(xkbcommon)
@@ -32,6 +30,7 @@ BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
+BuildRequires:	pkgconfig(libtsm)
 Requires(post,preun):	spec-helper
 
 %description
@@ -53,20 +52,6 @@ Group:		Development/C
 
 %description -n %{libeloop_devel}
 Development libraries for libeloop.
-
-%package -n %{libtsm}
-Summary:	Terminal-emulator State Machine
-Group:		System/Libraries
-
-%description -n %{libtsm}
-Terminal-emulator State Machine.
-
-%package -n %{libtsm_devel}
-Summary:	Development libraries for libtsm	
-Group:		Development/C
-
-%description -n %{libtsm_devel}
-Development libraries for libtsm.
 
 %package -n %{libuterm}
 Summary:	User-space Terminal Helper Library
@@ -129,14 +114,6 @@ fi
 %{_libdir}/libeloop.so
 %{_libdir}/pkgconfig/libeloop.pc
 %{_includedir}/eloop.h
-
-%files -n %{libtsm}
-%{_libdir}/libtsm.so.%{major}*
-
-%files -n %{libtsm_devel}
-%{_libdir}/libtsm.so
-%{_libdir}/pkgconfig/libtsm.pc
-%{_includedir}/tsm_*.h
 
 %files -n %{libuterm}
 %{_libdir}/libuterm.so.%{major}*
