@@ -31,7 +31,7 @@ BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
-BuildRequires:	pkgconfig(libtsm)
+BuildRequires:	pkgconfig(libtsm) = 3
 Requires(post,preun):	spec-helper
 
 %description
