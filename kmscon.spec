@@ -104,23 +104,23 @@ if [ -e /etc/systemd/system/autovt\@.service ]; then
 fi
 
 %files
-%{_bindir}/%{name}
-%{_libdir}/%{name}/*.so
-%{_unitdir}/%{name}*.service
+#%{_bindir}/%{name}
+#%{_libdir}/%{name}/*.so
+#%{_unitdir}/%{name}*.service
 
 %files -n %{libeloop}
-%{_libdir}/libeloop.so.%{major}*
+#%{_libdir}/libeloop.so.%{major}*
 
 %files -n %{libeloop_devel}
-%{_libdir}/libeloop.so
-%{_libdir}/pkgconfig/libeloop.pc
-%{_includedir}/eloop.h
+#%{_libdir}/libeloop.so
+#%{_libdir}/pkgconfig/libeloop.pc
+#%{_includedir}/eloop.h
 
 %files -n %{libuterm}
-%{_libdir}/libuterm.so.%{major}*
+#%{_libdir}/libuterm.so.%{major}*
 
 %files -n %{libuterm_devel}
-%{_libdir}/libuterm.so
-%{_libdir}/pkgconfig/libuterm.pc
-%{_includedir}/uterm_*.h
+#%{_libdir}/libuterm.so
+#%{_libdir}/pkgconfig/libuterm.pc
+#%{_includedir}/uterm_*.h
 
