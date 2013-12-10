@@ -40,34 +40,6 @@ linux kernel mode setting (KMS).
 It is an attempt to replace the in-kernel 
 VT implementation with a userspace console.
 
-%package -n %{libeloop}
-Summary:	Epoll-based Event-Loop Library
-Group:		System/Libraries
-
-%description -n %{libeloop}
-Epoll-based Event-Loop Library.
-
-%package -n %{libeloop_devel}
-Summary:	Development libraries for libeloop
-Group:		Development/C
-
-%description -n %{libeloop_devel}
-Development libraries for libeloop.
-
-%package -n %{libuterm}
-Summary:	User-space Terminal Helper Library
-Group:		System/Libraries
-
-%description -n %{libuterm}
-User-space Terminal Video/Input/Hotplug/etc Helper Library.
-
-%package -n %{libuterm_devel}
-Summary:	Development libraries for libuterm
-Group:		Development/C
-
-%description -n %{libuterm_devel}
-Development libraries for libuterm.
-
 %prep
 %setup -q
 %apply_patches
@@ -76,7 +48,8 @@ Development libraries for libuterm.
 %serverbuild_hardened
 
 %configure2_5x \
-		--disable-wlterm
+		--disable-wlterm \
+        --disable-static
 
 %make
 
@@ -104,23 +77,6 @@ if [ -e /etc/systemd/system/autovt\@.service ]; then
 fi
 
 %files
-#%{_bindir}/%{name}
-#%{_libdir}/%{name}/*.so
-#%{_unitdir}/%{name}*.service
-
-%files -n %{libeloop}
-#%{_libdir}/libeloop.so.%{major}*
-
-%files -n %{libeloop_devel}
-#%{_libdir}/libeloop.so
-#%{_libdir}/pkgconfig/libeloop.pc
-#%{_includedir}/eloop.h
-
-%files -n %{libuterm}
-#%{_libdir}/libuterm.so.%{major}*
-
-%files -n %{libuterm_devel}
-#%{_libdir}/libuterm.so
-#%{_libdir}/pkgconfig/libuterm.pc
-#%{_includedir}/uterm_*.h
-
+%{_bindir}/%{name}
+%{_libdir}/%{name}/*.so
+%{_unitdir}/%{name}*.service
