@@ -1,0 +1,30 @@
+From 8d205a2553dbb3b7c95b6af0f23c47a7291e6212 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?"tpg=20(Tomasz=20Pawe=C5=82=20Gajc)"?= <phenomenal@wp.pl>
+Date: Wed, 25 Sep 2013 12:55:07 +0200
+Subject: [PATCH] fix service file
+
+---
+ kmscon-7/docs/kmsconvt@.service | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/kmscon-7/docs/kmsconvt@.service b/kmscon-7/docs/kmsconvt@.service
+index f8622fc..a745a4d 100644
+--- a/docs/kmsconvt@.service
++++ b/docs/kmsconvt@.service
+@@ -43,6 +43,12 @@ TTYPath=/dev/%I
+ TTYReset=yes
+ TTYVHangup=yes
+ TTYVTDisallocate=yes
++Type=idle
++Restart=always
++RestartSec=0
++KillMode=process
++IgnoreSIGPIPE=no
++SendSIGHUP=yes
+ 
+ [Install]
+-Alias=getty.target.wants/kmsconvt@tty1.service
++WantedBy=getty.target
+-- 
+1.8.0
+
