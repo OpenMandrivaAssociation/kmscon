@@ -10,7 +10,7 @@
 Summary:	KMS/DRM based System Console
 Name:		kmscon
 Version:	8
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
@@ -48,7 +48,7 @@ VT implementation with a userspace console.
 %serverbuild_hardened
 
 %configure2_5x \
-		--disable-wlterm \
+	--disable-wlterm \
         --disable-static
 
 %make
@@ -66,10 +66,15 @@ fi
 
 ln -s /lib/systemd/system/kmsconvt\@.service /etc/systemd/system/autovt\@.service
 
-%_post_service kmsconvt\@.service
+# (tpg) comment out line with pam_securetty.so
+if grep -q pam_securetty.so$ /etc/pam.d/login ; then
+    sed -i -e '/^auth.*pam_securetty.so$/s/^/#/' /etc/pam.d/login
+fi
+
+%_post_service kmscon.service
 
 %preun
-%_preun_service kmsconvt\@.service
+%_preun_service kmscon.service
 
 if [ -e /etc/systemd/system/autovt\@.service ]; then
 	rm -rf /etc/systemd/system/autovt\@.service
