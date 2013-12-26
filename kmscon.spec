@@ -71,10 +71,10 @@ if grep -q pam_securetty.so$ /etc/pam.d/login ; then
     sed -i -e '/^auth.*pam_securetty.so$/s/^/#/' /etc/pam.d/login
 fi
 
-%_post_service kmscon.service
+%_post_service kmsconvt\@.service
 
 %preun
-%_preun_service kmscon.service
+%_preun_service kmsconvt\@.service
 
 if [ -e /etc/systemd/system/autovt\@.service ]; then
 	rm -rf /etc/systemd/system/autovt\@.service
