@@ -10,11 +10,12 @@
 Summary:	KMS/DRM based System Console
 Name:		kmscon
 Version:	8
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
+Source1:	kmscon.conf
 #Patch0:		0001-fix-service-file.patch
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
@@ -55,6 +56,9 @@ VT implementation with a userspace console.
 
 %install
 %makeinstall_std
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+install -m0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}
+
 mkdir -p %{buildroot}%{_unitdir}
 install -pm0644 docs/*.service %{buildroot}%{_unitdir}/
 
@@ -82,6 +86,7 @@ if [ -e /etc/systemd/system/autovt\@.service ]; then
 fi
 
 %files
+%config(noreplace) %{_sysconfdir}/%{name}/*.conf
 %{_bindir}/%{name}
 %{_libdir}/%{name}/*.so
 %{_unitdir}/%{name}*.service
