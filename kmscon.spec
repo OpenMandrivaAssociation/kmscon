@@ -33,7 +33,7 @@ BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
 BuildRequires:	pkgconfig(libtsm) = 3
-Requires(post,preun):	spec-helper
+Requires(post,preun):	rpm-helper
 
 %description
 Kmscon is a simple terminal emulator based on 
@@ -50,7 +50,7 @@ VT implementation with a userspace console.
 
 %configure2_5x \
 	--disable-wlterm \
-        --disable-static
+    --disable-static
 
 %make
 
@@ -68,22 +68,26 @@ if [ -e /etc/systemd/system/autovt\@.service ]; then
 	mv -f /etc/systemd/system/autovt\@.service /etc/systemd/system/autovt\@.kmscon
 fi
 
-ln -s /lib/systemd/system/kmsconvt\@.service /etc/systemd/system/autovt\@.service
-
 # (tpg) comment out line with pam_securetty.so
 if grep -q pam_securetty.so$ /etc/pam.d/login ; then
     sed -i -e '/^auth.*pam_securetty.so$/s/^/#/' /etc/pam.d/login
 fi
 
-%_post_service kmsconvt\@.service
+# (tpg) yes, first this is enabled in systemd(fallback) but now time to die :)
+/bin/systemctl --quiet disable getty@tty1.service
+
+%systemd_post kmsconvt\@.service
+%systemd_post kmsconvt@tty1.service
 
 %preun
-%_preun_service kmsconvt\@.service
+%systemd_postun kmsconvt\@.service
+%systemd_post kmsconvt@tty1.service
 
 if [ -e /etc/systemd/system/autovt\@.service ]; then
 	rm -rf /etc/systemd/system/autovt\@.service
 	mv -f /etc/systemd/system/autovt\@.kmscon autovt\@.service
 fi
+/bin/systemctl --quiet enable getty@tty1.service
 
 %files
 %config(noreplace) %{_sysconfdir}/%{name}/*.conf
