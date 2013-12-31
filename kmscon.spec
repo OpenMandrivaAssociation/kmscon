@@ -16,7 +16,7 @@ Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
 Source1:	kmscon.conf
-#Patch0:		0001-fix-service-file.patch
+Patch0:		kmscon-8-add-aliast-to-kmsconvt-service.patch
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
 BuildRequires:	pkgconfig(xkbcommon)
@@ -50,7 +50,7 @@ VT implementation with a userspace console.
 
 %configure2_5x \
 	--disable-wlterm \
-    --disable-static
+	--disable-static
 
 %make
 

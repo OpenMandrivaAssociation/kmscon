@@ -1,0 +1,7 @@
+--- kmscon-8/docs/kmsconvt@.service	2013-09-12 11:04:43.586000000 +0000
++++ kmscon-8/docs/kmsconvt@.service.tpg	2013-12-31 14:23:20.681482760 +0000
+@@ -46,3 +46,4 @@
+ 
+ [Install]
+ WantedBy=getty.target
++Alias=autovt\@.service
