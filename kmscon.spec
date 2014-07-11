@@ -10,7 +10,7 @@
 Summary:	KMS/DRM based System Console
 Name:		kmscon
 Version:	8
-Release:	8
+Release:	9
 License:	GPLv2+
 Group:		System/Configuration/Boot and Init
 Url:		http://www.freedesktop.org/wiki/Software/kmscon/
