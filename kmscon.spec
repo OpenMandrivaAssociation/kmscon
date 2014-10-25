@@ -17,6 +17,7 @@ Url:		http://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
 Source1:	kmscon.conf
 Patch0:		kmscon-8-add-aliast-to-kmsconvt-service.patch
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(libsystemd-daemon)
 BuildRequires:	pkgconfig(xkbcommon)
@@ -33,6 +34,7 @@ BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
 BuildRequires:	pkgconfig(libtsm) = 3
+BuildRequires:	pkgconfig(libudev)
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xsltproc
 Requires(post,preun):	rpm-helper
