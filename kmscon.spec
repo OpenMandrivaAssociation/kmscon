@@ -33,6 +33,8 @@ BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(fuse)
 BuildRequires:	pkgconfig(libtsm) = 3
+BuildRequires:	docbook-style-xsl
+BuildRequires:	xsltproc
 Requires(post,preun):	rpm-helper
 
 %description
@@ -94,3 +96,4 @@ fi
 %{_bindir}/%{name}
 %{_libdir}/%{name}/*.so
 %{_unitdir}/%{name}*.service
+%{_mandir}/man1/%{name}*
