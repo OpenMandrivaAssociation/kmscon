@@ -13,7 +13,7 @@ Version:	8
 Release:	11
 License:	GPLv2+
 Group:		System/Configuration/Boot and Init
-Url:		http://www.freedesktop.org/wiki/Software/kmscon/
+Url:		https://www.freedesktop.org/wiki/Software/kmscon/
 Source0:	http://www.freedesktop.org/software/kmscon/releases/%{name}-%{version}.tar.xz
 Source1:	kmscon.conf
 Patch0:		kmscon-8-add-aliast-to-kmsconvt-service.patch
